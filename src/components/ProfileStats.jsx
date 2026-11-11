@@ -1,0 +1,1 @@
+// shows a users profile stat (games played, reviews, currently playing, and completed games)

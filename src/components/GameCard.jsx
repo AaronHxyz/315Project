@@ -1,0 +1,1 @@
+// displays an games cover image and title, with navigation to its details page

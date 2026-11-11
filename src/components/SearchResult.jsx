@@ -1,0 +1,1 @@
+// shows an individual game search result with its cover image, title, and description

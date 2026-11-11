@@ -1,0 +1,1 @@
+// shows a users profile info things like pfp, username, email, and edit profile button

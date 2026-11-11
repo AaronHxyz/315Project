@@ -1,0 +1,1 @@
+// for embedded video trailers for games in the details page

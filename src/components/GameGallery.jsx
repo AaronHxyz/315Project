@@ -1,0 +1,1 @@
+// displays a games screenshots and lets users click to enlarge an image

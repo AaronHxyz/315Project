@@ -1,0 +1,1 @@
+// arranges multiple game card components into a grid layout
