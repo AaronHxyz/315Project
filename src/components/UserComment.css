@@ -1,0 +1,25 @@
+.comment {
+    background-color: #eeeeee;
+    padding: 20px;
+    border: 2px solid #cccccc;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+.comment p {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.comment-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.comment-actions button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #2878d0;
+    font-size: 14px;
+}

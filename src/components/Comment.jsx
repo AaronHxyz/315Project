@@ -1,1 +1,0 @@
-// an individual user comment with username, comment text, and like/dislike buttons

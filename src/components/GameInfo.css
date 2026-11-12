@@ -1,0 +1,16 @@
+.game-info {
+    padding: 20px 0;
+    font-size: 18px;
+}
+
+.game-info p {
+    margin: 12px 0;
+}
+
+.game-description {
+    margin-top: 25px;
+}
+
+.game-description h3{
+    margin-top: 10px;
+}
