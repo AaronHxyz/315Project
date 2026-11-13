@@ -1,7 +1,7 @@
-import GameTrailer from "../components/GameTrailer";
-import GameInfo from "../components/GameInfo";
-import Comment from "../components/UserComment";
-import GameGallery from "../components/GameGallery";
+import GameTrailer from "../components/GameTrailer/GameTrailer";
+import GameInfo from "../components/GameInfo/GameInfo";
+import Comment from "../components/Comments/UserComment";
+import GameGallery from "../components/GameGallery/GameGallery";
 
 import "./GameDetails.css";
 

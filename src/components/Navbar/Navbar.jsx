@@ -10,7 +10,7 @@ function Navbar() {
         <header className="navbar">
 
             <div className="navbar-left">
-                <a href="/" className="navbar-logo">GameHub</a>
+                <Link to="/" className="navbar-logo">GameHub</Link>
 
                 <div className="menu-container">
                     <button
@@ -25,10 +25,10 @@ function Navbar() {
 
                     {menuOpen && (
                         <div className="dropdown-menu">
-                            <a href="/">Home</a>
-                            <a href="/profile">Profile</a>
-                            <a href="/browse">Browse</a>
-                            <a href="/add-game">Add Game</a>
+                            <Link to="/">Home</Link>
+                            <Link to="/profile">Profile</Link>
+                            <Link to="/browse">Browse</Link>
+                            <Link to="/add-game">Add Game</Link>
                         </div>
                     )}
                 </div>
