@@ -6,6 +6,7 @@ import BrowseGames from "./pages/Browse";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import GameDetails from "./pages/GameDetails";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/game/:id" element={<GameDetails />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </>
   )
