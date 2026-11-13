@@ -6,20 +6,22 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 
-export function GameGrid({ games, title }){
-    const [limit] = useState(5);
+export function GameGrid({ games, title = null, hasLimit = true, filter="", flags=0 }) {
+    const [limit] = useState(hasLimit ? 5 : games.length);
     return (
         <div className="game-grid-container">
             <div className="game-grid-title">
-                <h2>{title}</h2>
-                {games.length > limit ? (
-                    <Link to="/browse" className="btn-link">View All</Link>
-                ) : null}
+                {title && <h2>{title}</h2>}
+                {games.length > limit && (
+                    <Link to={filter ? `/browse?filter=${filter}` : '/browse'} className="btn-link">View All</Link>
+                )}
             </div>
             <div className="game-grid">
                 {games.slice(0, limit).map((game) => (
-                    <GameCard key={game.id} game={game} />
-                ))}
+                    (flags === 0 || (game.flags & flags) === flags) && (
+                        <GameCard key={game.id} game={game} />
+                    ))
+                )}
             </div>
         </div>
     )

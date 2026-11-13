@@ -47,9 +47,9 @@ export default function HomePage(params){
                 <Link to="/add-game" className="btn btn-primary btn-sm">Add Game</Link>
             </div>
 
-            <GameGrid games={games} title="NEW GAMES" />
+            <GameGrid games={games} title="NEW GAMES" filter='new' />
 
-            <GameGrid games={games} title="TRENDING GAMES" />
+            <GameGrid games={games} title="TRENDING GAMES" filter='trending' />
         
 
         </div>
