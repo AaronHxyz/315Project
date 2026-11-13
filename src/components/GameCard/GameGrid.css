@@ -62,9 +62,23 @@
 }
 
 .browse-filter{
-    padding: 12px;
+    padding: 8px 12px;
     border: 1px solid #cccccc;
-    border-radius: 18px;
-    font-size: 20px;
+    border-radius: 10px;
+}
+.browse-filter:hover{
+    border-color: #2878d0;
+}
+
+.browse-filters{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+.browse-filters .filter{
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
