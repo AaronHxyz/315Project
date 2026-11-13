@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import "./Navbar.css";
 
 function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
+    const nav = useNavigate();
 
     return (
         <header className="navbar">
@@ -34,7 +36,13 @@ function Navbar() {
                 </div>
             </div>
 
-            <form className="navbar-search">
+            <form className="navbar-search" onSubmit={(e)=>{
+                e.preventDefault();
+                const inp = e.target.querySelector("input");
+                if(inp.value.trim() !== ''){
+                    nav(`/search?q=${encodeURIComponent(inp.value.trim())}`);
+                }
+            }}>
                 <span className="search-icon">⌕</span>
                 <input type="text" placeholder="Search" aria-label="Search"/>
             </form>

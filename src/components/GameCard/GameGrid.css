@@ -82,3 +82,29 @@
     gap: 10px;
 }
 
+.game-list-item{
+    display: flex;
+    gap: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    transition: .2s ease;
+    cursor: pointer;
+}
+.game-list-item:hover{
+    background-color: #f0f0f0;
+}
+.game-list-cover{
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    border-radius: 5px;
+    height: 300px;
+}
+.game-list-cover img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .2s ease;
+}
+.game-list-item:hover .game-list-cover img{
+    transform: scale(1.05);
+}

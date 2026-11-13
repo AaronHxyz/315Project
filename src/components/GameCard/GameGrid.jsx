@@ -1,6 +1,6 @@
 // arranges multiple game card components into a grid layout
 
-import { GameCard } from "./GameCard";
+import { GameCard, GameCardList } from "./GameCard";
 import "./GameGrid.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -22,6 +22,18 @@ export function GameGrid({ games, title = null, hasLimit = true, filter="", flag
                         <GameCard key={game.id} game={game} />
                     ))
                 )}
+            </div>
+        </div>
+    )
+}
+
+export function GameList({ games }) {
+    return (
+        <div className="game-list-container">
+            <div className="game-list">
+                {games.map((game) => (
+                    <GameCardList key={game.id} game={game} />
+                ))}
             </div>
         </div>
     )
