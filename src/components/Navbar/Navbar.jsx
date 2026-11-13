@@ -24,7 +24,7 @@ function Navbar() {
                     </button>
 
                     {menuOpen && (
-                        <div className="dropdown-menu">
+                        <div className="dropdown-menu" onClick={() => setMenuOpen(false)}>
                             <Link to="/">Home</Link>
                             <Link to="/profile">Profile</Link>
                             <Link to="/browse">Browse</Link>
