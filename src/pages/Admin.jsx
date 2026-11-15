@@ -173,11 +173,11 @@ export function AdminGameManage({ game }){
         <div className="admin-controls">
             <div className="admin-controls">
                 <span className="tag tag-secondary">IN REVIEW</span>
-                <Link className="btn btn-sm btn-primary" to={`/games/${game.id}/edit`}>EDIT</Link>
+                <Link className="btn btn-sm btn-primary" to={`/game/${game.id}/edit`}>EDIT</Link>
             </div>
             <div className="admin-controls">
-                <button className="btn btn-sm btn-success">APPROVE</button>
-                <button className="btn btn-sm btn-danger">REJECT</button>
+                <button onClick={()=>alert("Approved game! (not really)")} className="btn btn-sm btn-success">APPROVE</button>
+                <button onClick={()=>alert("Game has been rejected.")} className="btn btn-sm btn-danger">REJECT</button>
             </div>
         </div>
     )

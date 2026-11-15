@@ -15,6 +15,7 @@ const AdminGameManage = AdminModule.AdminGameManage || AdminModule.default;
 function GameDetails() {
 
     const game = {
+        id: 1,
         title: "Minecraft",
         releaseDate: "November 18, 2011",
         developer: "Mojang Studios",
