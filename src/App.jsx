@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import GameDetails from "./pages/GameDetails";
 import Profile from "./pages/Profile";
+import {AdminHome, AdminManage} from "./pages/Admin";
 
 function App() {
   return (
@@ -22,6 +23,11 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/game/:id" element={<GameDetails />} />
         <Route path="/profile" element={<Profile />} />
+
+        <Route path="/admin" element={<AdminHome />} />
+        <Route path="/admin/manage" element={<AdminManage />} />
+
+
       </Routes>
     </>
   )

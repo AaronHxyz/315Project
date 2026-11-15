@@ -1,9 +1,16 @@
-import GameTrailer from "../components/GameTrailer/GameTrailer";
-import GameInfo from "../components/GameInfo/GameInfo";
-import Comment from "../components/Comments/UserComment";
-import GameGallery from "../components/GameGallery/GameGallery";
+import * as GameTrailerModule from "../components/GameTrailer/GameTrailer";
+import * as GameInfoModule from "../components/GameInfo/GameInfo";
+import * as CommentModule from "../components/Comments/UserComment";
+import * as GameGalleryModule from "../components/GameGallery/GameGallery";
+import * as AdminModule from "./Admin";
 
 import "./GameDetails.css";
+
+const GameTrailer = GameTrailerModule.GameTrailer || GameTrailerModule.default;
+const GameInfo = GameInfoModule.GameInfo || GameInfoModule.default;
+const Comment = CommentModule.UserComment || CommentModule.default;
+const GameGallery = GameGalleryModule.GameGallery || GameGalleryModule.default;
+const AdminGameManage = AdminModule.AdminGameManage || AdminModule.default;
 
 function GameDetails() {
 
@@ -44,6 +51,7 @@ function GameDetails() {
             <div className="game-heading">
                 <h1>{game.title}</h1>
                 <p>{game.releaseDate} | {game.developer}</p>
+                {sessionStorage.getItem("admin") == "true" && <AdminGameManage game={game} />}
             </div>
 
             <div className="game-main-background">
