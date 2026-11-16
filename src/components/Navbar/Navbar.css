@@ -65,7 +65,7 @@
     font-size: 20px;
 }
 
-/* Logo and hamburger menu */
+/* logo and hamburger menu */
 .navbar-left {
     display: flex;
     align-items: center;
@@ -96,7 +96,7 @@
     border-radius: 2px;
 }
 
-/* Dropdown menu */
+/* dropdown menu */
 .dropdown-menu {
     position: absolute;
     top: 30px;

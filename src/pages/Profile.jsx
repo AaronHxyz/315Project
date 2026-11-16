@@ -1,18 +1,9 @@
 import ProfileHeader from "../components/ProfileHeader";
 
-
 import "./Profile.css";
 
-function Profile() {
-    const user = {
-        username: "Player123",
-        email: "player@email.com",
-        gamesPlayed: 12,
-        reviews: 5,
-        currentlyPlaying: 3,
-        completed: 9
-    };
- 
+function Profile({ user }) {
+
     return (
         <div className="profile-page">
 

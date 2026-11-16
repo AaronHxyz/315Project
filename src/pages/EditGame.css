@@ -1,0 +1,189 @@
+
+/* Overall page */
+.edit-game-page {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 30px 4%;
+}
+
+.edit-game-page h1 {
+    font-size: 32px;
+    margin-bottom: 25px;
+}
+
+/* Main two-column layout */
+.edit-game-main {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 50px;
+}
+
+/* Form fields */
+.edit-game-field {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.edit-game-field label,
+.edit-game-right label {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.edit-game-field input {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #cccccc;
+    border-radius: 18px;
+    box-sizing: border-box;
+}
+.edit-game-field textarea {
+    width: 100%;
+    max-width: 800px;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #cccccc;
+    border-radius: 18px;
+    box-sizing: border-box;
+    min-height: 180px;
+    resize: vertical;
+}
+
+/* Screenshot boxes */
+.edit-game-images {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+}
+
+.edit-game-image,
+.add-game-image {
+    aspect-ratio: 1 / 1;
+    border: 1px solid #bbbbbb;
+    border-radius: 6px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.edit-game-image {
+    background-color: #eeeeee;
+}
+
+.edit-game-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.add-game-image {
+    background-color: #f8f8f8;
+    border: 2px dashed #999999;
+    cursor: pointer;
+    font-size: 32px;
+}
+
+.add-game-image span {
+    font-size: 13px;
+}
+
+/* Cover photo */
+.edit-game-right {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.edit-game-cover {
+    width: 100%;
+    height: 500px;
+    background-color: #eeeeee;
+    border: 1px solid #bbbbbb;
+    border-radius: 6px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666666;
+}
+
+.cover-upload {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.cover-upload button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    background-color: #2878d0;
+    color: white;
+    cursor: pointer;
+}
+
+/* Company, release date, platforms */
+.edit-game-extra {
+    margin-top: 30px;
+}
+
+.edit-game-cover img {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    object-fit: contain;
+    border-radius: 6px;
+}
+
+.browse-button {
+    padding: 10px 20px;
+    border-radius: 6px;
+    background-color: #2878d0;
+    color: white;
+    cursor: pointer;
+}
+
+.browse-button:hover {
+    background-color: #1e5fa8;
+}
+
+/* Save button */
+.save-game-button {
+    display: block;
+    margin: 30px 0 0 auto;
+    padding: 14px 35px;
+    background-color: #2878d0;
+    color: white;
+    border: none;
+    border-radius: 18px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.save-game-button:hover,
+.cover-upload button:hover {
+    background-color: #1e5fa8;
+}
+
+/* Smaller screens */
+@media (max-width: 750px) {
+    .edit-game-main {
+        grid-template-columns: 1fr;
+    }
+
+    .edit-game-images {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .edit-game-right {
+        max-width: 350px;
+    }
+}

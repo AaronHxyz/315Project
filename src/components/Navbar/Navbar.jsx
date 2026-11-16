@@ -13,11 +13,8 @@ function Navbar() {
                 <a href="/" className="navbar-logo">GameHub</a>
 
                 <div className="menu-container">
-                    <button
-                        className="menu-button"
-                        onClick={() => setMenuOpen(!menuOpen)}
-                        aria-label="Toggle navigation menu"
-                    >
+                    <button className="menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle navigation menu" >
+                        
                         <span></span>
                         <span></span>
                         <span></span>
@@ -28,7 +25,7 @@ function Navbar() {
                             <a href="/">Home</a>
                             <a href="/profile">Profile</a>
                             <a href="/browse">Browse</a>
-                            <a href="/add-game">Add Game</a>
+                            <Link to="/add-game">Add Game</Link>
                         </div>
                     )}
                 </div>
