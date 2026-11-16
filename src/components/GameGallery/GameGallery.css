@@ -1,5 +1,4 @@
-
-/* Gallery containing all screenshots */
+/* gallery w/ all screenshots */
 .gallery-images {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -15,7 +14,7 @@
     cursor: pointer;
 }
 
-/* Dark background behind enlarged image */
+/* dark background */
 .image-overlay {
     position: fixed;
     top: 0;
@@ -30,14 +29,14 @@
     padding: 50px;
 }
 
-/* Enlarged screenshot */
+/* enlarged screenshot */
 .image-overlay img {
     max-width: 90%;
     max-height: 90%;
     object-fit: contain;
 }
 
-/* Close button */
+/* close button */
 .close-button {
     position: absolute;
     top: 25px;

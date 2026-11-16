@@ -15,11 +15,8 @@ function Navbar() {
                 <Link to="/" className="navbar-logo">GameHub</Link>
 
                 <div className="menu-container">
-                    <button
-                        className="menu-button"
-                        onClick={() => setMenuOpen(!menuOpen)}
-                        aria-label="Toggle navigation menu"
-                    >
+                    <button className="menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle navigation menu" >
+                        
                         <span></span>
                         <span></span>
                         <span></span>

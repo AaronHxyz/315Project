@@ -1,6 +1,14 @@
-
 .profile-page {
     width: 100%;
     margin: 0 auto;
     padding: 30px 0;
+}
+
+.profile-game-section {
+    width: 80%;
+    margin: 40px auto 0;
+}
+
+.profile-game-section .game-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
 }

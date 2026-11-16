@@ -40,3 +40,4 @@ export function GameList({ games }) {
 }
 
 export default GameGrid;
+

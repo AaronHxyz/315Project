@@ -4,6 +4,8 @@ import * as CommentModule from "../components/Comments/UserComment";
 import * as GameGalleryModule from "../components/GameGallery/GameGallery";
 import * as AdminModule from "./Admin";
 
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import "./GameDetails.css";
 
 const GameTrailer = GameTrailerModule.GameTrailer || GameTrailerModule.default;
@@ -12,26 +14,33 @@ const Comment = CommentModule.UserComment || CommentModule.default;
 const GameGallery = GameGalleryModule.GameGallery || GameGalleryModule.default;
 const AdminGameManage = AdminModule.AdminGameManage || AdminModule.default;
 
-function GameDetails() {
+function GameDetails({ game }) {
 
-    const game = {
-        id: 1,
-        title: "Minecraft",
-        releaseDate: "November 18, 2011",
-        developer: "Mojang Studios",
-        genres: ["Sandbox", "Survival"],
-        platforms: ["PC", "PlayStation", "Xbox"],
-        description: "Minecraft is a sandbox game where players explore a procedurally generated world, gather resources, build structures, and survive against enemies.",
-        trailerId: "MmB9b5njVbA",
-    
-        screenshots: [
-            "../../images/minecraft1.jpg",
-            "../../images/minecraft2.jpg",
-            "../../images/minecraft3.jpg",
-            "../../images/minecraft4.jpg",
-            "../../images/minecraft5.jpg"
-        ]
-    };
+    const navigate = useNavigate();
+
+    const [screenshotPreviews, setScreenshotPreviews] = useState([]);
+
+    useEffect(() => {
+        const screenshots = game.screenshots ?? [];
+        const objectUrls = [];
+
+        const imageUrls = screenshots.map(image => {
+            if (typeof image === "string") {
+                return image;
+            }
+
+            const imageUrl = URL.createObjectURL(image);
+            objectUrls.push(imageUrl);
+
+            return imageUrl;
+        });
+
+        setScreenshotPreviews(imageUrls);
+
+        return () => {
+            objectUrls.forEach(url => URL.revokeObjectURL(url));
+        };
+    }, [game.screenshots]);
 
     const comments = [
         {
@@ -51,17 +60,43 @@ function GameDetails() {
 
             <div className="game-heading">
                 <h1>{game.title}</h1>
-                <p>{game.releaseDate} | {game.developer}</p>
-                {sessionStorage.getItem("admin") == "true" && <AdminGameManage game={game} />}
+
+                <div className="game-heading-bottom">
+                    <p>{game.releaseDate} | {game.developer}</p>
+
+                    {sessionStorage.getItem("admin") !== "true" && (
+                        <button
+                            className="edit-game-button"
+                            type="button"
+                            onClick={() => navigate("/edit-game")}
+                        >
+                            Edit Game
+                        </button>
+                    )}
+
+                    {sessionStorage.getItem("admin") == "true" && (
+                        <AdminGameManage game={game} />
+                    )}
+                </div>
+
             </div>
 
             <div className="game-main-background">
                 <div className="game-main-content">
-                    {/* Cover and trailer go here */}
 
-                    <GameTrailer videoId={game.trailerId} />
+                    <div className="game-trailer-cover">
 
-                    <GameGallery images={game.screenshots} />
+                        <div className="game-cover-container">
+                            <img src={game.cover} alt={'${game.title} cover'} />
+                        </div>
+                        
+                        <div className="game-trailer-container">
+                            <GameTrailer videoId={game.trailerId} />
+                        </div>
+
+                    </div>
+
+                    <GameGallery images={screenshotPreviews} />
                     
                     <GameInfo genres={game.genres} platforms={game.platforms} description={game.description}/>
 

@@ -3,10 +3,7 @@ function FormInput({ label, type = "text", placeholder }) {
     return (
         <div className="form-input">
             <label>{label}</label>
-            <input
-                type={type}
-                placeholder={placeholder}
-            />
+            <input type={type} placeholder={placeholder} />
         </div>
     );
 }
