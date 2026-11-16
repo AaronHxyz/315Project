@@ -64,13 +64,15 @@ function GameDetails({ game }) {
                 <div className="game-heading-bottom">
                     <p>{game.releaseDate} | {game.developer}</p>
 
-                    <button
-                        className="edit-game-button"
-                        type="button"
-                        onClick={() => navigate("/edit-game")}
-                    >
-                        Edit Game
-                    </button>
+                    {sessionStorage.getItem("admin") !== "true" && (
+                        <button
+                            className="edit-game-button"
+                            type="button"
+                            onClick={() => navigate("/edit-game")}
+                        >
+                            Edit Game
+                        </button>
+                    )}
 
                     {sessionStorage.getItem("admin") == "true" && (
                         <AdminGameManage game={game} />
@@ -81,9 +83,18 @@ function GameDetails({ game }) {
 
             <div className="game-main-background">
                 <div className="game-main-content">
-                    {/* Cover and trailer go here */}
 
-                    <GameTrailer videoId={game.trailerId} />
+                    <div className="game-trailer-cover">
+
+                        <div className="game-cover-container">
+                            <img src={game.cover} alt={'${game.title} cover'} />
+                        </div>
+                        
+                        <div className="game-trailer-container">
+                            <GameTrailer videoId={game.trailerId} />
+                        </div>
+
+                    </div>
 
                     <GameGallery images={screenshotPreviews} />
                     

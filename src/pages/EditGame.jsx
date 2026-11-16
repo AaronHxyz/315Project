@@ -20,7 +20,7 @@ function EditGame({ game, setGame }) {
 
     useEffect(() => {
         if (!coverImage) {
-            setCoverPreview(null);
+            setCoverPreview(game.cover || null);
             return;
         }
 
@@ -28,7 +28,7 @@ function EditGame({ game, setGame }) {
         setCoverPreview(imageUrl);
 
         return () => URL.revokeObjectURL(imageUrl);
-    }, [coverImage]);
+    }, [coverImage, game.cover]);
 
     useEffect(() => {
         const objectUrls = [];
@@ -174,7 +174,7 @@ function EditGame({ game, setGame }) {
             developer: company,
             releaseDate: releaseDate,
             platforms: platforms.split(",").map(platform => platform.trim()),
-            coverImage: coverImage,
+            cover: coverImage || game.cover,
             screenshots: gameImages
         };
 

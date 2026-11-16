@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import ProfileStats from "../components/ProfileStats";
-import "../components/ProfileHeader.css";
+import ProfileStats from "../components/Profile/ProfileStats";
+import "../components/Profile/ProfileHeader.css";
 import "./EditProfile.css";
 
 function EditProfile({ user, setUser }) {

@@ -55,6 +55,32 @@
     padding: 25px 4%;
 }
 
+.game-trailer-cover {
+    display: grid;
+    grid-template-columns: 27fr 64fr;
+    gap: 15px;
+    width: 100%;
+    align-items: start;
+}
+
+.game-trailer-container {
+    min-width: 0;
+}
+
+.game-cover-container {
+    min-width: 0;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.game-cover-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
 /* Comments */
 .comment-section {
     margin-top: 30px;

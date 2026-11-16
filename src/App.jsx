@@ -25,6 +25,7 @@ function App() {
     genres: ["Sandbox", "Survival"],
     platforms: ["PC", "PlayStation", "Xbox"],
     description: "Minecraft is a sandbox game where players explore a procedurally generated world, gather resources, build structures, and survive against enemies.",
+    cover: "/dev/gameCovers/minecraft.webp",
     trailerId: "MmB9b5njVbA",
     screenshots: [
         "../images/minecraft1.jpg",
@@ -62,6 +63,8 @@ function App() {
         <Route path="/edit-profile" element={<EditProfile user={user} setUser={setUser} />} />
         <Route path="/edit-game" element={<EditGame game={game} setGame={setGame} />} />
         <Route path="/add-game" element={<AddGame />} />
+        <Route path="/admin" element={<AdminHome />} />
+        <Route path="/admin/manage" element={<AdminManage />} />
 
       </Routes>
     </>
