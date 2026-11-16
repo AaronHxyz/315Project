@@ -1,7 +1,7 @@
 // displays info for the game under the image gallery (platformns, genre and description)
 import "./GameInfo.css";
 
-function GameInfo({ genres, platforms, description }) {
+export function GameInfo({ genres, platforms, description }) {
     return (
         <div className="game-info">
             <p><strong>Genre:</strong> {genres.join(", ")}</p>

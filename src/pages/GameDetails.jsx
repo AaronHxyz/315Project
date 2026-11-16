@@ -1,11 +1,18 @@
-import GameTrailer from "../components/GameTrailer";
-import GameInfo from "../components/GameInfo";
-import Comment from "../components/UserComment";
-import GameGallery from "../components/GameGallery";
+import * as GameTrailerModule from "../components/GameTrailer/GameTrailer";
+import * as GameInfoModule from "../components/GameInfo/GameInfo";
+import * as CommentModule from "../components/Comments/UserComment";
+import * as GameGalleryModule from "../components/GameGallery/GameGallery";
+import * as AdminModule from "./Admin";
 
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./GameDetails.css";
+
+const GameTrailer = GameTrailerModule.GameTrailer || GameTrailerModule.default;
+const GameInfo = GameInfoModule.GameInfo || GameInfoModule.default;
+const Comment = CommentModule.UserComment || CommentModule.default;
+const GameGallery = GameGalleryModule.GameGallery || GameGalleryModule.default;
+const AdminGameManage = AdminModule.AdminGameManage || AdminModule.default;
 
 function GameDetails({ game }) {
 
@@ -64,7 +71,12 @@ function GameDetails({ game }) {
                     >
                         Edit Game
                     </button>
+
+                    {sessionStorage.getItem("admin") == "true" && (
+                        <AdminGameManage game={game} />
+                    )}
                 </div>
+
             </div>
 
             <div className="game-main-background">

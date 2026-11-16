@@ -1,5 +1,5 @@
-import AuthForm from "../components/AuthForm";
-import FormInput from "../components/FormInput";
+import AuthForm from "../components/Form/AuthForm";
+import FormInput from "../components/Form/FormInput";
 
 function Login() {
 

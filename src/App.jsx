@@ -1,14 +1,20 @@
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 
-import Navbar from "./components/navBar";
+import Navbar from "./components/Navbar/Navbar";
+import HomePage from "./pages/Home";
+import BrowseGames from "./pages/Browse";
+import SearchGames from "./pages/Search";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import GameDetails from "./pages/GameDetails";
 import Profile from "./pages/Profile";
+
 import EditGame from "./pages/EditGame";
 import AddGame from "./pages/AddGame";
 import EditProfile from "./pages/EditProfile";
+
+import {AdminHome, AdminManage} from "./pages/Admin";
 
 function App() {
 
@@ -45,13 +51,18 @@ function App() {
       <Navbar />
 
       <Routes>
+        <Route path="/" element={<HomePage/>} />
+        <Route path="/browse" element={<BrowseGames />} />
+        <Route path="/search" element={<SearchGames />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+
         <Route path="/game/:id" element={<GameDetails game={game} />} />
         <Route path="/profile" element={<Profile user={user} />} />
         <Route path="/edit-profile" element={<EditProfile user={user} setUser={setUser} />} />
         <Route path="/edit-game" element={<EditGame game={game} setGame={setGame} />} />
         <Route path="/add-game" element={<AddGame />} />
+
       </Routes>
     </>
   )
