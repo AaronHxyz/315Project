@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 
 import Navbar from "./components/Navbar/Navbar";
 import HomePage from "./pages/Home";
@@ -15,8 +15,27 @@ import AddGame from "./pages/AddGame";
 import EditProfile from "./pages/EditProfile";
 
 import {AdminHome, AdminManage} from "./pages/Admin";
+import { getMe } from "./api";
+
+export let user = null;
+const userListeners = new Set();
+
+export function setUser(newUser) {
+  user = newUser ?? null;
+  userListeners.forEach((listener) => listener());
+}
+
+function subscribeToUser(listener) {
+  userListeners.add(listener);
+  return () => userListeners.delete(listener);
+}
+
+function getUserSnapshot() {
+  return user;
+}
 
 function App() {
+  const currentUser = useSyncExternalStore(subscribeToUser, getUserSnapshot);
 
   const [game, setGame] = useState({
     title: "Minecraft",
@@ -36,20 +55,25 @@ function App() {
     ]
   });
 
-  const [user, setUser] = useState({
-    username: "Player123",
-    email: "player@email.com",
-    gamesPlayed: 12,
-    reviews: 5,
-    currentlyPlaying: 3,
-    completed: 9,
-    profilePicture: null
-    
-  });
+  useEffect(() => {
+    let active = true;
+
+    getMe()
+      .then((userData) => {
+        if (active) setUser(userData);
+      })
+      .catch(() => {
+        if (active) setUser(null);
+      });
+
+    return () => {
+      active = false;
+    };
+  }, []);
 
   return (
     <>
-      <Navbar />
+      <Navbar user={currentUser} />
 
       <Routes>
         <Route path="/" element={<HomePage/>} />
@@ -59,8 +83,8 @@ function App() {
         <Route path="/signup" element={<Signup />} />
 
         <Route path="/game/:id" element={<GameDetails game={game} />} />
-        <Route path="/profile" element={<Profile user={user} />} />
-        <Route path="/edit-profile" element={<EditProfile user={user} setUser={setUser} />} />
+        <Route path="/profile" element={<Profile user={currentUser} />} />
+        <Route path="/edit-profile" element={<EditProfile user={currentUser} setUser={setUser} />} />
         <Route path="/edit-game" element={<EditGame game={game} setGame={setGame} />} />
         <Route path="/add-game" element={<AddGame />} />
         <Route path="/admin" element={<AdminHome />} />

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import "./Navbar.css";
 
-function Navbar() {
+function Navbar({ user }) {
     const [menuOpen, setMenuOpen] = useState(false);
     const nav = useNavigate();
 
@@ -45,8 +45,14 @@ function Navbar() {
             </form>
 
             <div className="navbar-auth">
-                <Link to="/login">Log In</Link>
-                <Link to="/signup" className="signup-btn">Sign up</Link>
+                {user ? (
+                    <Link to="/profile">Profile</Link>
+                ) : (
+                    <>
+                        <Link to="/login">Log In</Link>
+                        <Link to="/signup" className="signup-btn">Sign up</Link>
+                    </>
+                )}
             </div>
 
         </header>

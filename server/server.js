@@ -50,10 +50,16 @@ function isValidPassword(password) {
         /[0-9]/.test(password)
     );
 }
+function isValidEmail(email) {
+    return (
+        typeof email === "string" &&
+        /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+    );
+}
 
 app.post("/api/register", async (req, res) => {
     try {
-        const { username, password } = req.body;
+        const { username, password, email } = req.body;
 
         if (!isValidUsername(username)) {
             return res.status(400).json({ message: "Invalid username" });
@@ -61,13 +67,16 @@ app.post("/api/register", async (req, res) => {
         if (!isValidPassword(password)) {
             return res.status(400).json({ message: "Invalid password" });
         }
+        if (!isValidEmail(email)) {
+            return res.status(400).json({ message: "Invalid email" });
+        }
 
         const existingUser = await getOne("SELECT * FROM users WHERE username = $1", [username]);
         if (existingUser) {
             return res.status(409).json({ message: "Username already exists" });
         }
         const passwordHash = await bcrypt.hash(password, 10);
-        await run("INSERT INTO users (username, password_hash) VALUES ($1, $2)", [username, passwordHash]);
+        await run("INSERT INTO users (username, password_hash, email) VALUES ($1, $2, $3)", [username, passwordHash, email]);
         res.status(201).json({ message: "User registered successfully" });
     } catch (error) {
         console.error("Error during registration:", error);

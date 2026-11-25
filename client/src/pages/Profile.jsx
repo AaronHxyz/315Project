@@ -1,9 +1,15 @@
 import ProfileHeader from "../components/Profile/ProfileHeader";
 import { GameGrid } from "../components/GameCard/GameGrid";
+import { useNavigate } from "react-router";
 
 import "./Profile.css";
 
 function Profile({ user }) {
+    if (!user) {
+        const nav = useNavigate();
+        nav("/login");
+        return null;
+    }
 
     const currentlyPlaying = [
         {
